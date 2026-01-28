@@ -7,9 +7,14 @@ import {
   CreditCard, 
   DollarSign, 
   Target, 
-  Calendar, 
+  Calendar as CalendarIcon, 
   CheckCircle2,
-  TrendingUp
+  TrendingUp,
+  Users,
+  Sparkles,
+  FileText,
+  Network,
+  Calculator
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -17,8 +22,14 @@ const menuItems = [
   { href: '/', label: 'Home', icon: Home },
   { href: '/debts', label: 'Dívidas & Credores', icon: CreditCard },
   { href: '/expenses', label: 'Despesas Fixas', icon: DollarSign },
+  { href: '/personal-expenses', label: 'Despesas Pessoais', icon: Users },
   { href: '/sales', label: 'Metas de Vendas', icon: Target },
-  { href: '/payment-plan', label: 'Plano de Pagamento', icon: Calendar },
+  { href: '/payment-plan', label: 'Plano de Pagamento', icon: CalendarIcon },
+  { href: '/simulator', label: 'Simulador', icon: Calculator },
+  { href: '/calendar', label: 'Calendário', icon: CalendarIcon },
+  { href: '/documents', label: 'Documentos', icon: FileText },
+  { href: '/relationships', label: 'Relacionamentos', icon: Network },
+  { href: '/intelligent-advice', label: 'Conselhos Inteligentes', icon: Sparkles },
   { href: '/decision', label: 'Destino x Decisão', icon: CheckCircle2 },
 ]
 

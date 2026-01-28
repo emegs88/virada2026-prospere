@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import type { Debt, FixedExpense, SalesGoal, PaymentPlan, ConsorcioParams, Decision } from '@/types'
+import type { Debt, FixedExpense, SalesGoal, PaymentPlan, ConsorcioParams, Decision, PersonalExpense, IntelligentAdvice } from '@/types'
 
 interface AppState {
   // Debts
@@ -34,6 +34,19 @@ interface AppState {
   addDecision: (decision: Decision) => void
   updateDecision: (id: string, decision: Partial<Decision>) => void
   removeDecision: (id: string) => void
+
+  // Personal Expenses
+  personalExpenses: PersonalExpense[]
+  addPersonalExpense: (expense: PersonalExpense) => void
+  updatePersonalExpense: (id: string, expense: Partial<PersonalExpense>) => void
+  removePersonalExpense: (id: string) => void
+
+  // Intelligent Advice
+  intelligentAdvices: IntelligentAdvice[]
+  addIntelligentAdvice: (advice: IntelligentAdvice) => void
+  updateIntelligentAdvice: (id: string, advice: Partial<IntelligentAdvice>) => void
+  removeIntelligentAdvice: (id: string) => void
+  generateIntelligentAdvice: () => Promise<void>
 }
 
 const initialDebts: Debt[] = [
@@ -70,6 +83,16 @@ const initialConsorcioParams: ConsorcioParams = {
   averageTicket: 50000,
 }
 
+const initialPersonalExpenses: PersonalExpense[] = [
+  { id: '1', category: 'salary', name: 'Salário', monthlyValue: 0, description: 'Renda mensal', status: 'active' },
+  { id: '2', category: 'housing', name: 'Casa/Aluguel', monthlyValue: 0, description: 'Moradia', status: 'active' },
+  { id: '3', category: 'family', name: 'Kevialne (Esposa)', monthlyValue: 0, description: 'Despesas da esposa', status: 'active' },
+  { id: '4', category: 'family', name: 'Filhos', monthlyValue: 0, description: 'Despesas com filhos', status: 'active' },
+  { id: '5', category: 'health', name: 'Convênios Médicos', monthlyValue: 0, description: 'Planos de saúde', status: 'active' },
+  { id: '6', category: 'education', name: 'Escola', monthlyValue: 0, description: 'Educação dos filhos', status: 'active' },
+  { id: '7', category: 'lifestyle', name: 'Vida Saudável', monthlyValue: 0, description: 'Academia, nutrição, bem-estar', status: 'active' },
+]
+
 export const useStore = create<AppState>()(
   persist(
     (set) => ({
@@ -79,6 +102,8 @@ export const useStore = create<AppState>()(
       paymentPlans: [],
       consorcioParams: initialConsorcioParams,
       decisions: [],
+      personalExpenses: initialPersonalExpenses,
+      intelligentAdvices: [],
 
       addDebt: (debt) =>
         set((state) => {
@@ -258,6 +283,44 @@ export const useStore = create<AppState>()(
         set((state) => ({
           decisions: state.decisions.filter((decision) => decision.id !== id),
         })),
+
+      // Personal Expenses
+      personalExpenses: initialPersonalExpenses,
+      addPersonalExpense: (expense) =>
+        set((state) => ({
+          personalExpenses: [...state.personalExpenses, expense],
+        })),
+      updatePersonalExpense: (id, updates) =>
+        set((state) => ({
+          personalExpenses: state.personalExpenses.map((expense) =>
+            expense.id === id ? { ...expense, ...updates } : expense
+          ),
+        })),
+      removePersonalExpense: (id) =>
+        set((state) => ({
+          personalExpenses: state.personalExpenses.filter((expense) => expense.id !== id),
+        })),
+
+      // Intelligent Advice
+      intelligentAdvices: [],
+      addIntelligentAdvice: (advice) =>
+        set((state) => ({
+          intelligentAdvices: [...state.intelligentAdvices, advice],
+        })),
+      updateIntelligentAdvice: (id, updates) =>
+        set((state) => ({
+          intelligentAdvices: state.intelligentAdvices.map((advice) =>
+            advice.id === id ? { ...advice, ...updates } : advice
+          ),
+        })),
+      removeIntelligentAdvice: (id) =>
+        set((state) => ({
+          intelligentAdvices: state.intelligentAdvices.filter((advice) => advice.id !== id),
+        })),
+      generateIntelligentAdvice: async () => {
+        // Esta função será implementada na página de conselhos
+        // Ela chamará a API OpenAI para gerar conselhos
+      },
     }),
     {
       name: 'painel-2026-storage',
