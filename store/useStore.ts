@@ -102,7 +102,6 @@ export const useStore = create<AppState>()(
       paymentPlans: [],
       consorcioParams: initialConsorcioParams,
       decisions: [],
-      personalExpenses: initialPersonalExpenses,
       intelligentAdvices: [],
 
       addDebt: (debt) =>
@@ -302,7 +301,6 @@ export const useStore = create<AppState>()(
         })),
 
       // Intelligent Advice
-      intelligentAdvices: [],
       addIntelligentAdvice: (advice) =>
         set((state) => ({
           intelligentAdvices: [...state.intelligentAdvices, advice],

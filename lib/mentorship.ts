@@ -76,7 +76,7 @@ export function analyzeDebtWithMentorship(
     ]
     analysis.estimatedTime = 'Imediato (hoje)'
     analysis.priority = 'urgent'
-  } else if (debt.importance >= 8) {
+  } else if (debt.importance && debt.importance >= 8) {
     analysis.recommendation = `💎 ALTA IMPORTÂNCIA: Esta dívida tem impacto estratégico (${debt.importance}/10). Priorize a quitação para liberar fluxo de caixa e melhorar relacionamento.`
     analysis.actionPlan = [
       `1. ACELERE PAGAMENTO: Com sua comissão de R$ ${monthlyCommission.toLocaleString('pt-BR')}/mês, você pode aumentar as parcelas`,
@@ -140,7 +140,7 @@ export function generateMentorshipSummary(
     consorcioParams.commissionInstallments
 
   const overdueDebts = debts.filter((d) => d.paymentPlan?.isOverdue)
-  const highImportanceDebts = debts.filter((d) => d.importance >= 8 && d.status === 'active')
+  const highImportanceDebts = debts.filter((d) => (d.importance || 0) >= 8 && d.status === 'active')
   const totalDebts = debts
     .filter((d) => d.status === 'active')
     .reduce((sum, d) => sum + (d.type === 'money' ? d.value : d.entryValue || 0), 0)

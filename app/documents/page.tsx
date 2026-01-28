@@ -8,7 +8,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { formatCurrency } from '@/lib/utils'
-import { Upload, FileText, Download, Trash2, FileCheck, Building2, User, Bank } from 'lucide-react'
+import { Upload, FileText, Download, Trash2, FileCheck, Building2, User, CreditCard } from 'lucide-react'
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { Textarea } from '@/components/ui/textarea'
 import type { Document, BankStatement, BankTransaction } from '@/types'
@@ -144,7 +144,7 @@ export default function DocumentsPage() {
             <Dialog open={isExtractOpen} onOpenChange={setIsExtractOpen}>
               <DialogTrigger asChild>
                 <Button variant="outline">
-                  <Bank className="mr-2 h-4 w-4" />
+                  <CreditCard className="mr-2 h-4 w-4" />
                   Extrair Extrato
                 </Button>
               </DialogTrigger>
@@ -412,12 +412,12 @@ export default function DocumentsPage() {
             <CardContent>
               <div className="space-y-4">
                 {bankStatements.map((statement) => (
-                  <div key={statement.id} className="p-4 border rounded-lg">
-                    <div className="flex items-center justify-between mb-4">
-                      <div>
-                        <div className="flex items-center gap-2">
-                          <Bank className="h-5 w-5 text-muted-foreground" />
-                          <h3 className="font-semibold">{statement.bankName}</h3>
+                    <div key={statement.id} className="p-4 border rounded-lg">
+                      <div className="flex items-center justify-between mb-4">
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <CreditCard className="h-5 w-5 text-muted-foreground" />
+                            <h3 className="font-semibold">{statement.bankName}</h3>
                           <span className="px-2 py-1 rounded text-xs bg-muted">
                             {statement.accountType.toUpperCase()}
                           </span>

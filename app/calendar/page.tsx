@@ -391,6 +391,7 @@ export default function CalendarPage() {
               </DialogFooter>
             </DialogContent>
           </Dialog>
+          </div>
         </div>
 
         {/* Navegação do Calendário */}

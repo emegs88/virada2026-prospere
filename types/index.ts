@@ -15,7 +15,7 @@ export interface Debt {
   notes?: string
   dueDate?: string
   // Novos campos para mentoria
-  importance: number // 1-10 (importância estratégica)
+  importance?: number // 1-10 (importância estratégica)
   paymentPlan?: {
     totalPaid: number
     installments: number
