@@ -452,7 +452,7 @@ export default function DecisionPage() {
             <CardContent className="py-12 text-center">
               <p className="text-muted-foreground">Nenhuma decisão cadastrada ainda.</p>
               <p className="text-sm text-muted-foreground mt-2">
-                Clique em "Nova Decisão" para começar.
+                Clique em &quot;Nova Decisão&quot; para começar.
               </p>
             </CardContent>
           </Card>

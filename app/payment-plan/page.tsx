@@ -217,7 +217,7 @@ export default function PaymentPlanPage() {
               <Calendar className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
               <p className="text-muted-foreground">Nenhum plano gerado ainda.</p>
               <p className="text-sm text-muted-foreground mt-2">
-                Clique em "Gerar Plano Automático" para criar o calendário financeiro.
+                Clique em &quot;Gerar Plano Automático&quot; para criar o calendário financeiro.
               </p>
             </CardContent>
           </Card>
